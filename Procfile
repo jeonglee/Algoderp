@@ -1,0 +1,1 @@
+web: gunicorn d3nalgorithms.wsgi --log-file -
