@@ -3,7 +3,7 @@
 var n = 50
 
 var margin = {top: 30, right: 30, bottom: 30, left: 30},
-    width = 800 - margin.left - margin.right,
+    width = 600 - margin.left - margin.right,
     height = 150 - margin.top - margin.bottom;
 
 var x = d3.scale.ordinal()
@@ -65,7 +65,7 @@ function click() {
         rects = gRects.selectAll("rect")
     
     var transition = svg.transition()
-      .duration(20)
+      .duration(1000)
       .each("start", function start() {
         var action = swaps.pop(),
             i = action[0],
