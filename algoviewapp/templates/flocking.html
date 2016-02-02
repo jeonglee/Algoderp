@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<div>
+    <h1> Boids flocking algorithm </h1>
+    <p id="flocking-animation"></p>
+    <p>Boids flocking layout from <a href="https://github.com/shuw/flock">shuw</a></p>
+
+</div>
+
+
+<script src="/static/js/d3.js"></script>
+<script src="/static/js/flock.min.js"></script>
+<script src="/static/js/flockexample.js"></script>
+
+{% endblock %}

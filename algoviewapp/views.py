@@ -10,3 +10,6 @@ def sorting(request):
     
 def contact(request):
     return render(request, 'contact.html')
+    
+def flocking(request):
+    return render(request, 'flocking.html')
