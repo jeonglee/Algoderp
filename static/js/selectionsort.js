@@ -52,10 +52,10 @@ function click() {
         .attr("y", getY)
         .attr("height", getH)
         .attr("width", 10)
-        .attr("fill", 'black')
         
     var swaps = selectionsort(array),
         rects = gRects.selectAll("rect")
+                      .attr("fill", 'black')
     
     var transition = svg.transition()
       .duration(1000)
@@ -67,8 +67,14 @@ function click() {
             rj = rects[0][j];
         rects[0][i] = rj;
         rects[0][j] = ri;
-        transition.each(function() { rects.transition().attr("x", getX).attr("y", getY).attr("height", getH); });
+        transition.each(function() { 
+            rects.transition()
+                .attr("x", getX)
+                .attr("y", getY)
+                .attr("height", getH); 
+        });
         if (swaps.length) transition = transition.transition().each("start", start);
+        else transition.each("end", function() { rects.transition().attr("fill", "grey"); } );
       });
 }
 

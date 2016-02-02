@@ -28,15 +28,16 @@ function getY(d,i) { return height - y(d); }
 function getH(d,i) { return y(d); }
 
 function insertionsort(array) {
-    var actions = [];
+    var actions = [],
+        idx;
     for (var i = 0; i < array.length-1; ++i) {
-        for (var j = i+1; j < array.length; ++j) {
-            if (array[i] > array[j]) {
-                var temp = array[i]
-                array[i] = array[j]
-                array[j] = temp
-                actions.push({"0": i, "1": j})
-            }
+        idx = i;
+        while (idx > -1 && array[idx+1] < array[idx]) {
+            var temp = array[idx+1]
+            array[idx+1] = array[idx]
+            array[idx] = temp
+            actions.push({"0": idx+1, "1": idx})
+            --idx;
         }
     }
     return actions.reverse()
@@ -52,13 +53,13 @@ function click() {
         .attr("y", getY)
         .attr("height", getH)
         .attr("width", 10)
-        .attr("fill", 'black')
         
     var swaps = insertionsort(array),
         rects = gRects.selectAll("rect")
+                      .attr("fill", 'black')
     
     var transition = svg.transition()
-      .duration(150)
+      .duration(100)
       .each("start", function start() {
         var action = swaps.pop(),
             i = action[0],
@@ -67,8 +68,15 @@ function click() {
             rj = rects[0][j];
         rects[0][i] = rj;
         rects[0][j] = ri;
-        transition.each(function() { rects.transition().attr("x", getX).attr("y", getY).attr("height", getH); });
+        transition.each(function() { 
+            rects.transition()
+                .attr("x", getX)
+                .attr("y", getY)
+                .attr("height", getH) 
+                .attr("fill", function(d,i) { if (i==j) return "purple"; })
+        });
         if (swaps.length) transition = transition.transition().each("start", start);
+        else transition.each("end", function() { rects.transition().attr("fill", "grey"); } );
       });
 }
 
