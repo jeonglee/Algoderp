@@ -7,3 +7,6 @@ def index(request):
 
 def sorting(request):
     return render(request, 'sorting.html')
+    
+def contact(request):
+    return render(request, 'contact.html')

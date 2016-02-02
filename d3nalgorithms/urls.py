@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', algoviewapp.views.index),
     url(r'^sorting', algoviewapp.views.sorting),
+    url(r'^contact', algoviewapp.views.contact),
 ]
