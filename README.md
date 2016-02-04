@@ -8,6 +8,7 @@ So far:
 - Selection Sort
 - Bubble Sort
 - Insertion Sort
+
 ## Flocking Algorithm
-- Boids Algorithm by Craig Reynolds. Credits to [shuw](https://github.com/shuw/flock) for the d3 flock layout used in the visualization!
+- [Boids](http://www.red3d.com/cwr/boids/) Algorithm by Craig Reynolds. Credits to [shuw](https://github.com/shuw/flock) for the d3 flock layout used in the visualization!
 
