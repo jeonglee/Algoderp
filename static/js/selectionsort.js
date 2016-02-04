@@ -1,9 +1,9 @@
 // Selection Sort //
 (function() {
-var n = 90
+var n = 75
 
 var margin = {top: 30, right: 30, bottom: 30, left: 30},
-    width = 1200 - margin.left - margin.right,
+    width = 960 - margin.left - margin.right,
     height = 150 - margin.top - margin.bottom;
 
 var x = d3.scale.ordinal()
