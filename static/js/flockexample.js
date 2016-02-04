@@ -7,7 +7,8 @@ boids = boids = (function() {
   results = [];
   for (i = j = 0; j <= 200; i = ++j) {
     results.push({
-      weight: Math.pow(Math.random() * 0.6, 2) + 0.8
+      weight: Math.random() + 0.8      
+      //weight: Math.pow(Math.random() * 0.6, 2) + 0.8
     });
   }
   return results;
@@ -22,7 +23,7 @@ if (d3.select('#index-flocking-animation').empty()) {
 }
 else {
   svg = d3.select('#index-flocking-animation').append('svg')
-    .attr("width", 800)
+    .attr("width", 1200)
     .attr("height", 150)
 }
     
