@@ -13,9 +13,16 @@ var y = d3.scale.ordinal()
     .domain(d3.range(n))
     .rangePoints([0, height]); 
 
-var p = d3.select("#insertionsort")
+var p;
+if (d3.select('#insertionsort').empty()) {
+    p = d3.select('#index-insertionsort')
+    .on("click",click);
+}
+else {
+    p = d3.select("#insertionsort")
     .on("click", click);
-    
+}
+
 var svg = p.append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -81,6 +88,8 @@ function click() {
 }
 
 click();
-p.append("button")
+if (d3.select("#index-insertionsort").empty()) {
+    p.append("button")
     .text("▶ Play");
+}
 })();

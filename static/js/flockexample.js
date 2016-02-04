@@ -5,7 +5,7 @@ COLOR = d3.scale.category10();
 boids = boids = (function() {
   var j, results;
   results = [];
-  for (i = j = 0; j <= 500; i = ++j) {
+  for (i = j = 0; j <= 200; i = ++j) {
     results.push({
       weight: Math.pow(Math.random() * 0.6, 2) + 0.8
     });
@@ -13,12 +13,20 @@ boids = boids = (function() {
   return results;
 })();
 
-var svg = d3.select('#flocking-animation').append('svg')
+var svg;
+
+if (d3.select('#index-flocking-animation').empty()) {
+  svg = d3.select('#flocking-animation').append('svg')
     .attr("width", '100%')
     .attr("height", 500)
-    .attr("style","outline: thin solid grey;")
-
-sprites = d3.select('svg').selectAll('.boid').data(boids);
+}
+else {
+  svg = d3.select('#index-flocking-animation').append('svg')
+    .attr("width", 800)
+    .attr("height", 150)
+}
+    
+sprites = svg.selectAll('.boid').data(boids);
 
 sprites.enter()
         .append('svg:polygon')
