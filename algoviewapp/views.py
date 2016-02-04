@@ -13,3 +13,6 @@ def contact(request):
     
 def flocking(request):
     return render(request, 'flocking.html')
+    
+def about(request):
+    return render(request, 'about.html')

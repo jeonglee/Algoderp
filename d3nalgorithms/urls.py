@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^sorting', algoviewapp.views.sorting),
     url(r'^contact', algoviewapp.views.contact),
     url(r'^flocking', algoviewapp.views.flocking),
+    url(r'^about', algoviewapp.views.about),
 ]
