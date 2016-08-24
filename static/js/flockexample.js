@@ -27,6 +27,10 @@ else {
     .attr("height", 150)
 }
     
+var colorbyweight = d3.scale.quantile() 
+                      .domain([0,1.8])
+                      .range(["#fcfbfd","#efedf5","#dadaeb","#bcbddc","#9e9ac8","#807dba","#6a51a3","#54278f","#3f007d"]);
+                      
 sprites = svg.selectAll('.boid').data(boids);
 
 sprites.enter()
@@ -34,7 +38,8 @@ sprites.enter()
         .classed('boid', true)
         .attr('r', 2)
         .attr('fill', function(d, i) {
-            return COLOR(i);
+            return COLOR(i);; 
+            //colorbyweight(d.weight)
         })
         .attr('points', function(d) {
             return "0,0 -" + (12 * d.weight) + "," + (4 * d.weight) + " -" + (12 * d.weight) + ",-" + (4 * d.weight);
